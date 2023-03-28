@@ -34,5 +34,31 @@ namespace CTRClient
             })).Start();
 
         }
+        public void show_log_window()
+        {
+            Program.g_log_frm.Show();
+            Program.g_log_frm.Activate();
+        }
+        public void log(string msg, string logtype)
+        {
+            if (logtype != "todo")
+            {
+                Program.g_full_log += "\n" + msg;
+                if (Program.g_log_frm != null)
+                    Program.g_log_frm.update_log();
+            }
+            else
+            {
+                // m_ucTask.update_log(msg);
+            }
+            update_status(msg);
+        }
+        public void update_status(string msg)
+        {
+            this.InvokeOnUiThreadIfRequired(() =>
+            {
+                // lblInstantLog.Text = msg;
+            });
+        }
     }
 }
