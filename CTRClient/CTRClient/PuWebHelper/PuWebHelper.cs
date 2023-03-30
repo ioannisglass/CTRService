@@ -63,7 +63,17 @@ namespace CTRClient.PWebHelper
 
                 var browser = await Puppeteer.LaunchAsync(w_varBroOpts);
                 var page = await browser.NewPageAsync();
-                await page.GoToAsync("https://ip.me/");
+                // await page.SetViewportAsync(new ViewPortOptions
+                // {
+                //     Width = 1440,
+                //     Height = 900
+                // });
+                await page.GoToAsync("https://www.google.com/");
+                await page.TypeAsync("input[name='q']", "puppeteer C#");
+                await page.Keyboard.PressAsync("Enter");
+                await page.WaitForNavigationAsync();
+                await page.EvaluateExpressionAsync("window.scrollBy(0, window.innerHeight)");
+
                 // 
                 //     Console.WriteLine("Generating PDF");
                 //     await page.PdfAsync(Path.Combine(Directory.GetCurrentDirectory(), "google.pdf"));
