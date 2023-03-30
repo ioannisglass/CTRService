@@ -1,4 +1,5 @@
-﻿using CTRClient.MainModule;
+﻿using CTRClient.ChrDevToolsWebHelper;
+using CTRClient.MainModule;
 using CTRClient.PWebHelper;
 using PuppeteerSharp;
 using System;
@@ -25,11 +26,15 @@ namespace CTRClient
         {
             // AutoPro w_clsAutoPro = new AutoPro();
             PuWebHelper w_clsPuWebHelper = new PuWebHelper();
+            ChrWebHelper w_clsChrWebHelper = new ChrWebHelper();
+            ChrRemoteWebHelper w_clsChrRemoteHelper = new ChrRemoteWebHelper();
 
             new Thread((ThreadStart)(async () =>
             {
                 await Task.Delay(100);
-                bool w_bRet = await w_clsPuWebHelper.start();
+                // bool w_bRet = await w_clsPuWebHelper.start();
+                // bool w_bRet = await w_clsChrWebHelper.start();
+                bool w_bRet = await w_clsChrRemoteHelper.start();
 
             })).Start();
 
